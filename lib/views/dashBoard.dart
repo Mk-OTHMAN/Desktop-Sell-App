@@ -105,7 +105,7 @@ class DashBoard extends StatelessWidget {
                               buttonNameFontSize: 5,
                               color: Colors.orange,
                             ),
-                            //! some space height ______
+                            //! some space height __________
                             Functions.someSpaceHeight(25),
                             // !____ stock elevated button ____
                             CustomElevatedButton(
@@ -117,7 +117,7 @@ class DashBoard extends StatelessWidget {
                             ),
                             //! some space height ___
                             Functions.someSpaceHeight(25),
-                            //! ____ Corporate elevated button ____
+                            //! ____ Corporate elevated button ______
                             CustomElevatedButton(
                               buttonName: 'Corporate Account',
                               onPressed: () {},
