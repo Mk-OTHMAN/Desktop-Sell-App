@@ -107,7 +107,7 @@ class DashBoard extends StatelessWidget {
                             ),
                             //! some space height __________
                             Functions.someSpaceHeight(25),
-                            // !____ stock elevated button ____
+                            // !____ stock elevated button _____
                             CustomElevatedButton(
                               buttonName: 'Stock',
                               onPressed: () {},
