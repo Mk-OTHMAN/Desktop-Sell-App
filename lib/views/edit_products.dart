@@ -69,6 +69,15 @@ class EditProductScreen extends StatelessWidget {
                                           onPressed: () {
                                             productCubit
                                                 .editProductMainPrice(index);
+                                            productCubit.gifAlertDialog(
+                                              Constant.jobDoneGif,
+                                              context,
+                                              'SUCCESS',
+                                              'Main Price has been Modified successfully',
+                                              () => Navigator.popAndPushNamed(
+                                                  context,
+                                                  RoutesName.editProductScreen),
+                                            );
                                           },
                                         ));
                               },
@@ -92,6 +101,15 @@ class EditProductScreen extends StatelessWidget {
                                             productCubit
                                                 .editProductCustomerPrice(
                                                     index);
+                                            productCubit.gifAlertDialog(
+                                              Constant.jobDoneGif,
+                                              context,
+                                              'SUCCESS',
+                                              'Customr Price has been Modified successfully',
+                                              () => Navigator.popAndPushNamed(
+                                                  context,
+                                                  RoutesName.editProductScreen),
+                                            );
                                           },
                                         ));
                               },
@@ -114,6 +132,15 @@ class EditProductScreen extends StatelessWidget {
                                           onPressed: () {
                                             productCubit
                                                 .editProductStock(index);
+                                            productCubit.gifAlertDialog(
+                                              Constant.jobDoneGif,
+                                              context,
+                                              'SUCCESS',
+                                              'Your product Stock has been Modified successfully',
+                                              () => Navigator.popAndPushNamed(
+                                                  context,
+                                                  RoutesName.editProductScreen),
+                                            );
                                           },
                                         ));
                               },
@@ -136,8 +163,15 @@ class EditProductScreen extends StatelessWidget {
                                           width: 15,
                                           onPressed: () {
                                             productCubit.editProductName(index);
-                                            productCubit.gifShowDialog(
-                                                Constant.jobDoneGif, context);
+                                            productCubit.gifAlertDialog(
+                                              Constant.jobDoneGif,
+                                              context,
+                                              'SUCCESS',
+                                              'Your product Name has been Modified successfully',
+                                              () => Navigator.popAndPushNamed(
+                                                  context,
+                                                  RoutesName.editProductScreen),
+                                            );
                                           },
                                         ));
                               },
