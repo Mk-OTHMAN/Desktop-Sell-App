@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
 import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
 import 'package:home_tools/constant/constant.dart';
+import 'package:home_tools/copmonent/alert_show_dialog/edit_alert_show/edit_alert_recive_number_only.dart';
 import 'package:home_tools/copmonent/alert_show_dialog/edit_alert_show/edit_alert_show.dart';
 import 'package:home_tools/copmonent/table_component/editProductTable/editCell_component.dart';
 import 'package:home_tools/copmonent/table_component/editProductTable/header.dart';
@@ -56,7 +57,8 @@ class EditProductScreen extends StatelessWidget {
                               onPressed: () {
                                 showDialog(
                                     context: context,
-                                    builder: (context) => EditAlertShowDialog(
+                                    builder: (context) =>
+                                        EditAlertShowDialogReciveNumbersOnly(
                                           editFieldController:
                                               productCubit.mainPriceController,
                                           hintText: ' New Price',
@@ -77,7 +79,8 @@ class EditProductScreen extends StatelessWidget {
                               onPressed: () {
                                 showDialog(
                                     context: context,
-                                    builder: (context) => EditAlertShowDialog(
+                                    builder: (context) =>
+                                        EditAlertShowDialogReciveNumbersOnly(
                                           editFieldController: productCubit
                                               .customerPriceController,
                                           hintText: ' New Price',
@@ -99,7 +102,8 @@ class EditProductScreen extends StatelessWidget {
                               onPressed: () {
                                 showDialog(
                                     context: context,
-                                    builder: (context) => EditAlertShowDialog(
+                                    builder: (context) =>
+                                        EditAlertShowDialogReciveNumbersOnly(
                                           editFieldController: productCubit
                                               .productQuantityController,
                                           hintText: ' New stock',

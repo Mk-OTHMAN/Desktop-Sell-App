@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_tools/constant/constant.dart';
 import 'package:home_tools/copmonent/elevated_button.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
-import 'package:home_tools/copmonent/text_field.dart';
+import 'package:home_tools/copmonent/text_field/text_field.dart';
 import 'package:lottie/lottie.dart';
 
 class EditAlertShowDialog extends StatelessWidget {

@@ -46,20 +46,15 @@ class DashBoard extends StatelessWidget {
                       onPressed: () => showDialog(
                           context: context,
                           builder: (context) => AddAlertShowDialog(
-                              productNameController:
-                                  productCubit.productNamecontroller,
-                              productQuantityController:
-                                  productCubit.productQuantityController,
-                              mainPriceController:
-                                  productCubit.mainPriceController,
-                              customerPriceController:
-                                  productCubit.customerPriceController,
-                              onPressed: () {
-                                if (productCubit.formKey.currentState!
-                                    .validate()) {
-                                  productCubit.addProduct();
-                                }
-                              })),
+                                productNameController:
+                                    productCubit.productNamecontroller,
+                                productQuantityController:
+                                    productCubit.productQuantityController,
+                                mainPriceController:
+                                    productCubit.mainPriceController,
+                                customerPriceController:
+                                    productCubit.customerPriceController,
+                              )),
                       buttonNameFontSize: 4,
                     ),
                     // !some space width ___
@@ -78,7 +73,10 @@ class DashBoard extends StatelessWidget {
                     // !delete product text button
                     CustomTextButton(
                       textButtonName: '- Delete Product',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.popAndPushNamed(
+                            context, RoutesName.deleteProductScreen);
+                      },
                       buttonNameFontSize: 4,
                     ),
                   ],

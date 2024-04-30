@@ -6,7 +6,8 @@ import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
 import 'package:home_tools/constant/constant.dart';
 import 'package:home_tools/copmonent/elevated_button.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
-import 'package:home_tools/copmonent/text_field.dart';
+import 'package:home_tools/copmonent/text_field/number_text_field.dart';
+import 'package:home_tools/copmonent/text_field/text_field.dart';
 import 'package:lottie/lottie.dart';
 
 class AddAlertShowDialog extends StatelessWidget {
@@ -14,10 +15,8 @@ class AddAlertShowDialog extends StatelessWidget {
   final TextEditingController productQuantityController;
   final TextEditingController mainPriceController;
   final TextEditingController customerPriceController;
-  final VoidCallback onPressed;
   const AddAlertShowDialog(
       {super.key,
-      required this.onPressed,
       required this.productNameController,
       required this.productQuantityController,
       required this.mainPriceController,
@@ -54,7 +53,7 @@ class AddAlertShowDialog extends StatelessWidget {
                           textUpTextField: 'Product Name',
                         ),
                         // stock text field ___
-                        CustomTextField(
+                        NumberTextField(
                           controller: productQuantityController,
                           hintText: 'Enter Stock Quantity',
                           labelText: 'Quantity',
@@ -71,14 +70,14 @@ class AddAlertShowDialog extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         // main price text field ___
-                        CustomTextField(
+                        NumberTextField(
                           controller: mainPriceController,
                           hintText: 'Enter Main Price',
                           labelText: 'Main Price',
                           textUpTextField: 'Main Price',
                         ),
                         // customer Price text field ___
-                        CustomTextField(
+                        NumberTextField(
                           controller: customerPriceController,
                           hintText: 'Enter Customer Price',
                           labelText: 'Customer Price',
@@ -90,13 +89,16 @@ class AddAlertShowDialog extends StatelessWidget {
                     Functions.someSpaceHeight(150),
                     // elevated button for add product
                     CustomElevatedButton(
-                      buttonName: 'Add Product',
-                      buttonHeight: 25,
-                      buttonWidth: 40,
-                      buttonNameFontSize: 4,
-                      color: Colors.white,
-                      onPressed: onPressed,
-                    )
+                        buttonName: 'Add Product',
+                        buttonHeight: 25,
+                        buttonWidth: 40,
+                        buttonNameFontSize: 4,
+                        color: Colors.white,
+                        onPressed: () {
+                          if (productCubit.formKey.currentState!.validate()) {
+                            productCubit.addProduct();
+                          }
+                        })
                   ]),
                 );
               }),

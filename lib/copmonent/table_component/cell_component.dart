@@ -5,20 +5,27 @@ class CellComponent extends StatelessWidget {
   final String cellName;
   final double fontSize;
   final FontWeight fontWeight;
+  final Color color;
+  final double cellWidth;
+  final double cellHeight;
   const CellComponent(
       {super.key,
       required this.cellName,
       this.fontSize = 5,
-      this.fontWeight = FontWeight.bold});
+      this.fontWeight = FontWeight.bold,
+      this.color = Colors.transparent,
+      this.cellWidth = 120,
+      this.cellHeight = 40});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120.w,
-      height: 40.h,
-      decoration: const BoxDecoration(
+      width: cellWidth.w,
+      height: cellHeight.h,
+      decoration: BoxDecoration(
+        color: color,
         shape: BoxShape.rectangle,
-        border: BorderDirectional(
+        border: const BorderDirectional(
             top: BorderSide.none,
             bottom: BorderSide(style: BorderStyle.solid, color: Colors.black),
             end: BorderSide(
