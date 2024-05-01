@@ -13,7 +13,7 @@ class Functions {
     return SizedBox(width: width.w);
   }
 
-//* ____ finction for AlertDialog ___
+//* ____ finction for AlertDialog _____
   static void gifShowDialog(String gifPath, BuildContext context, String title,
       String content, VoidCallback onPressed) {
     showDialog(
