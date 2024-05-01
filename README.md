@@ -1,6 +1,6 @@
 # Desktop Sell App
 
-A new Flutter Desktop App project...
+A new Flutter Desktop App project  . . .
 
 ## Getting Started
 
