@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
 import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
 import 'package:home_tools/constant/constant.dart';
+import 'package:home_tools/copmonent/functions_wiget.dart';
 import 'package:home_tools/copmonent/table_component/cell_component.dart';
 import 'package:home_tools/copmonent/table_component/delete_cell_component.dart';
 import 'package:home_tools/routes/routes_name.dart';
@@ -58,17 +59,30 @@ class DeleteProductScreen extends StatelessWidget {
                         children: [
                           TableRow(children: [
                             DeleteCellComponent(
-                              cellName: productCubit.productBox
-                                  .getAt(index)
-                                  .name
-                                  .toString(),
-                              fontSize: 4,
-                              fontWeight: FontWeight.w600,
-                              cellWidth: double.infinity,
-                              onPressed: () {
-                                productCubit.dleteProduct(index);
-                              },
-                            )
+                                cellName: productCubit.productBox
+                                    .getAt(index)
+                                    .name
+                                    .toString(),
+                                fontSize: 4,
+                                fontWeight: FontWeight.w600,
+                                cellWidth: double.infinity,
+                                onPressed: () => Functions.gifShowDialog(
+                                        Constant.fireHandGif,
+                                        context,
+                                        'Warning',
+                                        'are you sure you want to delete this product',
+                                        () {
+                                      productCubit.dleteProduct(index);
+                                      Navigator.pop(context);
+                                      Functions.gifShowDialog(
+                                          Constant.rabitDone,
+                                          context,
+                                          'Success',
+                                          'removed successfully', () {
+                                        Navigator.popAndPushNamed(context,
+                                            RoutesName.deleteProductScreen);
+                                      });
+                                    }))
                           ]),
                         ],
                       );

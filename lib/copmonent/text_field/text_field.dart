@@ -46,7 +46,6 @@ class CustomTextField extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return 'Enter $textUpTextField';
                     }
-                    return 'Done';
                   },
                   controller: controller,
                   decoration: InputDecoration(

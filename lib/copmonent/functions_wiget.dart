@@ -28,22 +28,30 @@ class Functions {
             ),
             title: Text(
               title,
-              style: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 8.sp),
               textAlign: TextAlign.center,
             ),
             content: Text(
               content,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 4.sp,
+                  color: Colors.black),
               textAlign: TextAlign.center,
             ),
             actions: [
               Center(
                 child: TextButton(
                   onPressed: onPressed,
-                  child: const Text(
+                  child: Text(
                     'OK',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 5.sp),
                   ),
                 ),
               ),

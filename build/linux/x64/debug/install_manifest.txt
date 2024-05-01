@@ -7,7 +7,14 @@
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/gif/jobDone.gif
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/gif/walk-jolly.gif
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/gif/Rabit_Done.gif
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/gif/hand-fire.gif
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/gif/cat_muscles.gif
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/images/home_background.jpg
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/images/woolly-man.png
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/images/trash.png
+/home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/images/trash1.png
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/lottie/Byscel.json
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/lottie/packaging-for-delivery.json
 /home/mk/Projects/home_tools/build/linux/x64/debug/bundle/data/flutter_assets/asset/lottie/product-promotion.json

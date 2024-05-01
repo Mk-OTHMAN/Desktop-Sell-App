@@ -123,7 +123,7 @@ class EditProductScreen extends StatelessWidget {
                                     builder: (context) =>
                                         EditAlertShowDialogReciveNumbersOnly(
                                           editFieldController: productCubit
-                                              .productQuantityController,
+                                              .productStockController,
                                           hintText: ' New stock',
                                           labelText: 'Stock Quantity',
                                           textUpTextField: 'New Quantity',

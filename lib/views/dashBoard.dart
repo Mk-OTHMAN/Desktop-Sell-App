@@ -48,8 +48,8 @@ class DashBoard extends StatelessWidget {
                           builder: (context) => AddAlertShowDialog(
                                 productNameController:
                                     productCubit.productNamecontroller,
-                                productQuantityController:
-                                    productCubit.productQuantityController,
+                                productStockController:
+                                    productCubit.productStockController,
                                 mainPriceController:
                                     productCubit.mainPriceController,
                                 customerPriceController:

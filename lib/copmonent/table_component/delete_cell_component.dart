@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_tools/constant/constant.dart';
 
 class DeleteCellComponent extends StatelessWidget {
   final String cellName;
@@ -50,13 +51,22 @@ class DeleteCellComponent extends StatelessWidget {
                     color: Colors.black),
               ),
             ),
-            IconButton(
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onPressed: onPressed,
-                icon: const Icon(
-                  Icons.delete_sharp,
-                )),
+
+            //?======================================================================
+            InkWell(
+                overlayColor:
+                    const MaterialStatePropertyAll(Colors.transparent),
+                onTap: onPressed,
+                child: Transform.scale(
+                  scale: .6,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    child: Image.asset(
+                      Constant.trashIcon,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ))
           ],
         ),
       ),

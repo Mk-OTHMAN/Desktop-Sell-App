@@ -13,6 +13,10 @@ class Constant {
   static String editDialogBackground = 'asset/lottie/product-promotion.json';
   static String jobDoneGif = 'asset/gif/jobDone.gif';
   static String trashMan = 'asset/images/woolly-man.png';
+  static String fireHandGif = 'asset/gif/hand-fire.gif';
+  static String rabitDone = 'asset/gif/Rabit_Done.gif';
+  static String trashIcon = 'asset/images/trash.png';
+  static String catGif = 'asset/gif/cat_muscles.gif';
   //?______ globla key variable ____
   static GlobalKey dialogNameKey = GlobalKey();
   static GlobalKey dialogMainPriceKey = GlobalKey();

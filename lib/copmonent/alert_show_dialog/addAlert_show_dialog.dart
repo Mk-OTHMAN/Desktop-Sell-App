@@ -8,17 +8,18 @@ import 'package:home_tools/copmonent/elevated_button.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
 import 'package:home_tools/copmonent/text_field/number_text_field.dart';
 import 'package:home_tools/copmonent/text_field/text_field.dart';
+import 'package:home_tools/routes/routes_name.dart';
 import 'package:lottie/lottie.dart';
 
 class AddAlertShowDialog extends StatelessWidget {
   final TextEditingController productNameController;
-  final TextEditingController productQuantityController;
+  final TextEditingController productStockController;
   final TextEditingController mainPriceController;
   final TextEditingController customerPriceController;
   const AddAlertShowDialog(
       {super.key,
       required this.productNameController,
-      required this.productQuantityController,
+      required this.productStockController,
       required this.mainPriceController,
       required this.customerPriceController});
 
@@ -54,7 +55,7 @@ class AddAlertShowDialog extends StatelessWidget {
                         ),
                         // stock text field ___
                         NumberTextField(
-                          controller: productQuantityController,
+                          controller: productStockController,
                           hintText: 'Enter Stock Quantity',
                           labelText: 'Quantity',
                           textUpTextField: 'Stock Quantity',
@@ -96,7 +97,18 @@ class AddAlertShowDialog extends StatelessWidget {
                         color: Colors.white,
                         onPressed: () {
                           if (productCubit.formKey.currentState!.validate()) {
-                            productCubit.addProduct();
+                            productCubit.addProduct(
+                                productNameController,
+                                productStockController,
+                                mainPriceController,
+                                customerPriceController);
+                            Functions.gifShowDialog(
+                                Constant.catGif,
+                                context,
+                                'SUCCESS',
+                                'Added New Product to Stock Successfully',
+                                () => Navigator.popAndPushNamed(
+                                    context, RoutesName.dashBoardScreen));
                           }
                         })
                   ]),

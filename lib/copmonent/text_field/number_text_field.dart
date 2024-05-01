@@ -27,8 +27,6 @@ class NumberTextField extends StatelessWidget {
       create: (context) => AddProductCubit(),
       child: BlocBuilder<AddProductCubit, AddProductState>(
           builder: (context, state) {
-        AddProductCubit productCubit =
-            BlocProvider.of<AddProductCubit>(context);
         return Column(
           children: [
             Text(
@@ -46,7 +44,6 @@ class NumberTextField extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return 'Enter $textUpTextField';
                     }
-                    return 'Done';
                   },
                   controller: controller,
                   inputFormatters: <TextInputFormatter>[

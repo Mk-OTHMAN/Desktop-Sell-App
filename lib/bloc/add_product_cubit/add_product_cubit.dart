@@ -8,26 +8,30 @@ import 'package:home_tools/models/product.dart';
 class AddProductCubit extends Cubit<AddProductState> {
   AddProductCubit() : super(AddProductInitial());
   TextEditingController productNamecontroller = TextEditingController();
-  TextEditingController productQuantityController = TextEditingController();
+  TextEditingController productStockController = TextEditingController();
   TextEditingController mainPriceController = TextEditingController();
   TextEditingController customerPriceController = TextEditingController();
   Box productBox = Hive.box<Product>('products');
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   //* _________________________________________________________________
-  Future<void> addProduct() async {
+  Future<void> addProduct(
+      TextEditingController productNamecontroller,
+      TextEditingController productStockController,
+      TextEditingController mainPriceController,
+      TextEditingController customerPriceController) async {
     Box productBox = Hive.box<Product>('products');
     await productBox.addAll(<Product>[
       Product(
         name: productNamecontroller.text,
-        quantity: productQuantityController.text,
+        quantity: productStockController.text,
         mainPrice: mainPriceController.text,
         customerPrice: customerPriceController.text,
       )
     ]);
 
     productNamecontroller.clear();
-    productQuantityController.clear();
+    productStockController.clear();
     mainPriceController.clear();
     customerPriceController.clear();
 
@@ -66,7 +70,7 @@ class AddProductCubit extends Cubit<AddProductState> {
             mainPrice: productBox.getAt(index).mainPrice,
             quantity: addToStock(index).toString()));
 
-    productQuantityController.clear();
+    productStockController.clear();
     emit(AddProductInitial());
   }
 
@@ -103,7 +107,7 @@ class AddProductCubit extends Cubit<AddProductState> {
 //* _________________________________________________________________
   int addToStock(int index) {
     int oldStock = int.parse(productBox.getAt(index).quantity);
-    int newStock = int.parse(productQuantityController.text);
+    int newStock = int.parse(productStockController.text);
     return oldStock + newStock;
   }
 
