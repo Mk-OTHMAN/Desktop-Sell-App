@@ -27,11 +27,12 @@ class CellComponent extends StatelessWidget {
         shape: BoxShape.rectangle,
         border: const BorderDirectional(
             top: BorderSide.none,
-            bottom: BorderSide(style: BorderStyle.solid, color: Colors.black),
+            bottom: BorderSide(
+                width: 1.75, style: BorderStyle.solid, color: Colors.black),
             end: BorderSide(
-                width: .5, style: BorderStyle.solid, color: Colors.black),
+                width: 1, style: BorderStyle.solid, color: Colors.black),
             start: BorderSide(
-                width: .5, style: BorderStyle.solid, color: Colors.black)),
+                width: 1, style: BorderStyle.solid, color: Colors.black)),
       ),
       child: Center(
         child: Text(

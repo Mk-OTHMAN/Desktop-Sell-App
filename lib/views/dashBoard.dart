@@ -108,7 +108,10 @@ class DashBoard extends StatelessWidget {
                             // !____ stock elevated button ______
                             CustomElevatedButton(
                               buttonName: 'Stock',
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.popAndPushNamed(
+                                    context, RoutesName.stockScreen);
+                              },
                               buttonWidth: 70,
                               buttonHeight: 40,
                               buttonNameFontSize: 5,
