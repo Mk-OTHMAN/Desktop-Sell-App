@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_tools/routes/routes_name.dart';
+import 'package:home_tools/views/corporate_account.dart';
+import 'package:home_tools/views/customer_account.dart';
 import 'package:home_tools/views/dashBoard.dart';
 import 'package:home_tools/views/delete_product_screen.dart';
 import 'package:home_tools/views/edit_products.dart';
@@ -20,7 +22,12 @@ class GenerateRoute {
         return MaterialPageRoute(builder: (ctx) => const DeleteProductScreen());
       case RoutesName.stockScreen:
         return MaterialPageRoute(builder: (ctx) => const StockScreen());
+      case RoutesName.corporateAccountScreen:
+        return MaterialPageRoute(builder: (ctx) => const CorporateAccount());
+      case RoutesName.customeAccountScreen:
+        return MaterialPageRoute(builder: (ctx) => const CustomerAccount());
+      default:
+        return MaterialPageRoute(builder: (ctx) => const Home());
     }
-    return MaterialPageRoute(builder: (ctx) => const Home());
   }
 }

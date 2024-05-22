@@ -13,85 +13,87 @@ class DeleteProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AddProductCubit productCubit = BlocProvider.of<AddProductCubit>(context);
+
     return Scaffold(
-      floatingActionButton: Transform.scale(
-        scale: .8,
-        child: FloatingActionButton(
-          onPressed: () =>
-              Navigator.popAndPushNamed(context, RoutesName.dashBoardScreen),
-          child: const Icon(
-            Icons.home,
-            size: 40,
+        floatingActionButton: Transform.scale(
+          scale: .8,
+          child: FloatingActionButton(
+            onPressed: () =>
+                Navigator.popAndPushNamed(context, RoutesName.dashBoardScreen),
+            child: const Icon(
+              Icons.home,
+              size: 40,
+            ),
           ),
         ),
-      ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-            color: Constant.redColor1,
-            image: DecorationImage(image: AssetImage(Constant.trashMan))),
-        child: BlocProvider(
-          create: (context) => AddProductCubit(),
-          child: BlocBuilder<AddProductCubit, AddProductState>(
+        body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+                color: Constant.mainColor,
+                image: DecorationImage(image: AssetImage(Constant.trashMan))),
+            child: BlocBuilder<AddProductCubit, AddProductState>(
               builder: (context, state) {
-            AddProductCubit productCubit =
-                BlocProvider.of<AddProductCubit>(context);
-            List productsList = productCubit.productBox.values.toList();
-
-            return Column(
-              children: [
-                const CellComponent(
-                  cellName: 'Product Name',
-                  fontSize: 4,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.red,
-                  cellWidth: double.infinity,
-                ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: productsList.length,
-                    itemBuilder: (context, index) {
-                      return Table(
-                        defaultVerticalAlignment:
-                            TableCellVerticalAlignment.middle,
-                        children: [
-                          TableRow(children: [
-                            DeleteCellComponent(
-                                cellName: productCubit.productBox
-                                    .getAt(index)
-                                    .name
-                                    .toString(),
-                                fontSize: 4,
-                                fontWeight: FontWeight.w600,
-                                cellWidth: double.infinity,
-                                onPressed: () => Functions.gifShowDialog(
-                                        Constant.fireHandGif,
-                                        context,
-                                        'Warning',
-                                        'are you sure you want to delete this product',
-                                        () {
-                                      productCubit.dleteProduct(index);
-                                      Navigator.pop(context);
-                                      Functions.gifShowDialog(
-                                          Constant.rabitDone,
-                                          context,
-                                          'Success',
-                                          'removed successfully', () {
-                                        Navigator.popAndPushNamed(context,
-                                            RoutesName.deleteProductScreen);
-                                      });
-                                    }))
-                          ]),
-                        ],
-                      );
-                    })
-              ],
-            );
-          }),
-        ),
-      ),
-    );
+                return Column(children: [
+                  const CellComponent(
+                    cellName: 'Product Name',
+                    fontSize: 4,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.red,
+                    cellWidth: double.infinity,
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: productCubit.productBox.values.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Table(
+                              defaultVerticalAlignment:
+                                  TableCellVerticalAlignment.middle,
+                              children: [
+                                TableRow(children: [
+                                  DeleteCellComponent(
+                                      cellName: productCubit.productBox
+                                          .getAt(index)
+                                          .name
+                                          .toString(),
+                                      cellWidth: double.infinity,
+                                      onPressed: () => Functions.gifShowDialog(
+                                              Constant.fireHandGif,
+                                              context,
+                                              'Warning',
+                                              'are you sure you want to delete this product',
+                                              () {
+                                            productCubit.dleteProduct(index);
+                                            Navigator.pop(context);
+                                            Functions.gifShowDialog(
+                                                Constant.rabitDone,
+                                                context,
+                                                'Success',
+                                                'removed successfully', () {
+                                              Navigator.popAndPushNamed(
+                                                  context,
+                                                  RoutesName
+                                                      .deleteProductScreen);
+                                            });
+                                          }))
+                                ]),
+                              ],
+                            ),
+                            const Divider(
+                              color: Colors.black,
+                              thickness: 1.5,
+                              endIndent: 180,
+                              indent: 180,
+                            )
+                          ],
+                        );
+                      })
+                ]);
+              },
+            )));
   }
 }

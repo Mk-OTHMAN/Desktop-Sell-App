@@ -96,6 +96,5 @@ class TableHeader extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

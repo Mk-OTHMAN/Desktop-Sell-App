@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
 
 class CustomTextField extends StatelessWidget {
   final double width;
@@ -23,47 +19,38 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddProductCubit(),
-      child: BlocBuilder<AddProductCubit, AddProductState>(
-          builder: (context, state) {
-        AddProductCubit productCubit =
-            BlocProvider.of<AddProductCubit>(context);
-        return Column(
-          children: [
-            Text(
-              textUpTextField,
-              style: TextStyle(
-                  fontSize: 7.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-            SizedBox(
-              width: width.w,
-              height: height.h,
-              child: TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter $textUpTextField';
-                    }
-                  },
-                  controller: controller,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 5.w),
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    focusColor: Colors.purple,
-                    hintText: hintText,
-                    labelText: labelText,
-                  )),
-            ),
-          ],
-        );
-      }),
+    return Column(
+      children: [
+        Text(
+          textUpTextField,
+          style: TextStyle(
+              fontSize: 7.sp, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        SizedBox(
+          width: width.w,
+          height: height.h,
+          child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Enter $textUpTextField';
+                }
+              },
+              autofocus: true,
+              controller: controller,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(left: 5.w),
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    style: BorderStyle.solid,
+                  ),
+                ),
+                focusColor: Colors.purple,
+                hintText: hintText,
+                labelText: labelText,
+              )),
+        ),
+      ],
     );
   }
 }

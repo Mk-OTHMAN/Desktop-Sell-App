@@ -20,14 +20,14 @@ class TableCellRow extends StatelessWidget {
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: [
         TableRow(children: [
-          CellComponent(cellName: mainPrice),
           CellComponent(cellName: customerPrice),
+          CellComponent(cellName: mainPrice),
           Row(
             children: [
               CellComponent(
                 cellName: productName,
-                fontSize: 4,
-                fontWeight: FontWeight.w600,
+                fontSize: 5,
+                fontWeight: FontWeight.bold,
               ),
             ],
           )

@@ -17,9 +17,11 @@ class Constant {
   static String rabitDone = 'asset/gif/Rabit_Done.gif';
   static String trashIcon = 'asset/images/trash.png';
   static String catGif = 'asset/gif/cat_muscles.gif';
+  static String trashGif = 'asset/gif/trash.gif';
+  static String addProductLottie = 'asset/lottie/shopping-options.json';
+
   //?______ globla key variable ____
-  static GlobalKey dialogNameKey = GlobalKey();
-  static GlobalKey dialogMainPriceKey = GlobalKey();
-  static GlobalKey dialogCustomerPriceKey = GlobalKey();
-  static GlobalKey dialogStockyKey = GlobalKey();
+  // static GlobalKey dialogMainPriceKey = GlobalKey();
+  // static GlobalKey dialogCustomerPriceKey = GlobalKey();
+  // static GlobalKey dialogStockyKey = GlobalKey();
 }

@@ -30,14 +30,14 @@ class DeleteCellComponent extends StatelessWidget {
         shape: BoxShape.rectangle,
         border: const BorderDirectional(
             top: BorderSide.none,
-            bottom: BorderSide(style: BorderStyle.solid, color: Colors.black),
+            //bottom: BorderSide(style: BorderStyle.solid, color: Colors.black),
             end: BorderSide(
                 width: .5, style: BorderStyle.solid, color: Colors.black),
             start: BorderSide(
                 width: .5, style: BorderStyle.solid, color: Colors.black)),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.symmetric(horizontal: 50.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -58,11 +58,11 @@ class DeleteCellComponent extends StatelessWidget {
                     const MaterialStatePropertyAll(Colors.transparent),
                 onTap: onPressed,
                 child: Transform.scale(
-                  scale: .6,
+                  scale: 1,
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     child: Image.asset(
-                      Constant.trashIcon,
+                      Constant.trashGif,
                       fit: BoxFit.cover,
                     ),
                   ),

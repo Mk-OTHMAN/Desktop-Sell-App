@@ -7,28 +7,30 @@ import 'package:home_tools/models/product.dart';
 
 class AddProductCubit extends Cubit<AddProductState> {
   AddProductCubit() : super(AddProductInitial());
+
+  //* _______________ Controllers ________________________
   TextEditingController productNamecontroller = TextEditingController();
   TextEditingController productStockController = TextEditingController();
-  TextEditingController mainPriceController = TextEditingController();
-  TextEditingController customerPriceController = TextEditingController();
+  TextEditingController productMainPriceController = TextEditingController();
+  TextEditingController productCustomerPriceController =
+      TextEditingController();
+  //* ____________ Hive Database _____________
   Box productBox = Hive.box<Product>('products');
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  //* _________________________________________________________________
+  //* __________________________Add Product Function___________________________________________
   Future<void> addProduct(
-      TextEditingController productNamecontroller,
-      TextEditingController productStockController,
-      TextEditingController mainPriceController,
-      TextEditingController customerPriceController) async {
+    TextEditingController productNamecontroller,
+    TextEditingController productStockController,
+    TextEditingController mainPriceController,
+    TextEditingController customerPriceController,
+  ) async {
     Box productBox = Hive.box<Product>('products');
-    await productBox.addAll(<Product>[
-      Product(
-        name: productNamecontroller.text,
-        quantity: productStockController.text,
-        mainPrice: mainPriceController.text,
-        customerPrice: customerPriceController.text,
-      )
-    ]);
+    await productBox.add(Product(
+      name: productNamecontroller.text,
+      quantity: productStockController.text,
+      mainPrice: mainPriceController.text,
+      customerPrice: customerPriceController.text,
+    ));
 
     productNamecontroller.clear();
     productStockController.clear();
@@ -38,80 +40,150 @@ class AddProductCubit extends Cubit<AddProductState> {
     emit(AddProductInitial());
   }
 
-//* _________________________________________________________________
-  void dleteProduct(int index) {
-    productBox.deleteAt(index);
+//* ___________________________Delete Product Function______________________________________
+  Future<void> dleteProduct(int index) async {
+    await productBox.delete(productBox.keyAt(index));
+    await productBox.flush();
     emit(AddProductInitial());
   }
 
-//* _________________________________________________________________
-  Future<void> editProductName(int index) async {
-    Box productBox = Hive.box<Product>('products');
-    productBox.putAt(
-        index,
-        Product(
+//* ____________________Edit Product Name Function_____________________________________________
+
+  void editProductName(int index, List l1, List l2) {
+    if (l1[index] == l2[index]
+        // l1[productBox.keyAt(index)] == l2[productBox.keyAt(index)]
+        ) {
+      productBox.putAt(
+          index,
+          Product(
             name: productNamecontroller.text,
             customerPrice: productBox.getAt(index).customerPrice,
             mainPrice: productBox.getAt(index).mainPrice,
-            quantity: productBox.getAt(index).quantity));
+            quantity: productBox.getAt(index).quantity,
+          ));
+    } else {
+      for (int i = 0; i < l1.length; i++) {
+        if (l2[index].key == l1[i].key
+            // l2[productBox.keyAt(index)] == l1[productBox.keyAt(i)]
+            ) {
+          productBox.putAt(
+              i,
+              Product(
+                name: productNamecontroller.text,
+                customerPrice: productBox.getAt(i).customerPrice,
+                mainPrice: productBox.getAt(i).mainPrice,
+                quantity: productBox.getAt(i).quantity,
+              ));
+        }
+      }
+    }
 
     productNamecontroller.clear();
+
     emit(AddProductInitial());
   }
+//* ____________________Edit Stock Product Function_____________________________________________
 
-//* _________________________________________________________________
-  Future<void> editProductStock(int index) async {
-    Box productBox = Hive.box<Product>('products');
-    productBox.putAt(
-        index,
-        Product(
+  void editProductStock(int index, List l1, List l2) {
+    int addToStock(int index) {
+      int oldStock = int.parse(productBox.getAt(index).quantity);
+      int newStock = int.parse(productStockController.text);
+      return oldStock + newStock;
+    }
+
+    if (l1[index] == l2[index]) {
+      productBox.putAt(
+          index,
+          Product(
             name: productBox.getAt(index).name,
             customerPrice: productBox.getAt(index).customerPrice,
             mainPrice: productBox.getAt(index).mainPrice,
-            quantity: addToStock(index).toString()));
+            quantity: addToStock(index).toString(),
+          ));
+    } else {
+      for (int i = 0; i < l1.length; i++) {
+        if (l2[index].key == l1[i].key) {
+          productBox.putAt(
+              i,
+              Product(
+                name: productBox.getAt(i).name,
+                customerPrice: productBox.getAt(i).customerPrice,
+                mainPrice: productBox.getAt(i).mainPrice,
+                quantity: addToStock(i).toString(),
+              ));
+        }
+      }
+    }
 
     productStockController.clear();
+
     emit(AddProductInitial());
   }
+//* ___________________Edit Main Price Product Function______________________________________________
 
-//* _________________________________________________________________
-  Future<void> editProductMainPrice(int index) async {
-    Box productBox = Hive.box<Product>('products');
-    productBox.putAt(
-        index,
-        Product(
+  void editProductMainPriceByIndex(int index, List l1, List l2) {
+    if (l1[index] == l2[index]) {
+      productBox.putAt(
+          index,
+          Product(
             name: productBox.getAt(index).name,
             customerPrice: productBox.getAt(index).customerPrice,
-            mainPrice: mainPriceController.text,
-            quantity: productBox.getAt(index).quantity));
+            mainPrice: productMainPriceController.text,
+            quantity: productBox.getAt(index).quantity,
+          ));
+    } else {
+      for (int i = 0; i < l1.length; i++) {
+        if (l2[index].key == l1[i].key) {
+          productBox.putAt(
+              i,
+              Product(
+                name: productBox.getAt(i).name,
+                customerPrice: productBox.getAt(i).customerPrice,
+                mainPrice: productMainPriceController.text,
+                quantity: productBox.getAt(i).quantity,
+              ));
+        }
+      }
+    }
 
-    mainPriceController.clear();
+    productMainPriceController.clear();
+
     emit(AddProductInitial());
   }
 
-//* _________________________________________________________________
-  Future<void> editProductCustomerPrice(int index) async {
-    Box productBox = Hive.box<Product>('products');
-    productBox.putAt(
-        index,
-        Product(
+//* __________________Add Customer Price Product Function_______________________________________________
+
+  void editProductCustomerPrice(int index, List l1, List l2) {
+    if (l1[index] == l2[index]) {
+      productBox.putAt(
+          index,
+          Product(
             name: productBox.getAt(index).name,
-            customerPrice: customerPriceController.text,
+            customerPrice: productCustomerPriceController.text,
             mainPrice: productBox.getAt(index).mainPrice,
-            quantity: productBox.getAt(index).quantity));
+            quantity: productBox.getAt(index).quantity,
+          ));
+    } else {
+      for (int i = 0; i < l1.length; i++) {
+        if (l2[index].key == l1[i].key) {
+          productBox.putAt(
+              i,
+              Product(
+                name: productBox.getAt(i).name,
+                customerPrice: productCustomerPriceController.text,
+                mainPrice: productBox.getAt(i).mainPrice,
+                quantity: productBox.getAt(i).quantity,
+              ));
+        }
+      }
+    }
 
-    customerPriceController.clear();
+    productCustomerPriceController.clear();
+
     emit(AddProductInitial());
   }
 
-//* _________________________________________________________________
-  int addToStock(int index) {
-    int oldStock = int.parse(productBox.getAt(index).quantity);
-    int newStock = int.parse(productStockController.text);
-    return oldStock + newStock;
-  }
-
-//* _________________________________________________________________
+//* ________________Gif Alert Dialog Function_________________________________________________
   void gifAlertDialog(
     String gifPath,
     BuildContext context,
@@ -122,4 +194,7 @@ class AddProductCubit extends Cubit<AddProductState> {
     Functions.gifShowDialog(gifPath, context, title, content, onPressed);
     emit(AddProductInitial());
   }
+
+  //* _________Function return List of products___________
+  List<dynamic> getProductList() => productBox.values.toList();
 }

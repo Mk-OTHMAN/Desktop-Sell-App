@@ -12,9 +12,11 @@ class Product extends HiveObject {
   String mainPrice;
   @HiveField(3)
   String customerPrice;
-  Product(
-      {this.name = 'No Data',
-      this.quantity = 'No Data',
-      this.mainPrice = 'No Data',
-      this.customerPrice = 'No Data'});
+
+  Product({
+    this.name = 'No Data',
+    this.quantity = 'No Data',
+    this.mainPrice = 'No Data',
+    this.customerPrice = 'No Data',
+  });
 }
