@@ -278,6 +278,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///home/mk/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "io",
       "rootUri": "file:///home/mk/.pub-cache/hosted/pub.dev/io-1.0.4",
       "packageUri": "lib/",
@@ -602,7 +608,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-05-04T20:24:32.932754Z",
+  "generated": "2024-05-22T19:43:01.883066Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }
