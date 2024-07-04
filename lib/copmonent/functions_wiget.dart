@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 
-class Functions {
+class CustomWidget {
 //* ____ function for some height _____
   static SizedBox someSpaceHeight(double height) {
     return SizedBox(height: height.h);
@@ -13,7 +13,7 @@ class Functions {
     return SizedBox(width: width.w);
   }
 
-//* ____ finction for AlertDialog _____
+//* ____ function for AlertDialog _____
   static void gifShowDialog(String gifPath, BuildContext context, String title,
       String content, VoidCallback onPressed) {
     showDialog(
@@ -58,5 +58,19 @@ class Functions {
             ],
           ));
         });
+  }
+
+  //*---------------- CircleAvatar
+  static Widget pay(String path, VoidCallback processFunction) {
+    return InkWell(
+        overlayColor: const MaterialStatePropertyAll(Colors.transparent),
+        onTap: processFunction,
+        child: CircleAvatar(
+          backgroundColor: Colors.transparent,
+          radius: 50,
+          child: Lottie.asset(
+            path,
+          ),
+        ));
   }
 }

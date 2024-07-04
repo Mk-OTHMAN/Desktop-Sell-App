@@ -22,14 +22,10 @@ class TableCellRow extends StatelessWidget {
         TableRow(children: [
           CellComponent(cellName: customerPrice),
           CellComponent(cellName: mainPrice),
-          Row(
-            children: [
-              CellComponent(
-                cellName: productName,
-                fontSize: 5,
-                fontWeight: FontWeight.bold,
-              ),
-            ],
+          CellComponent(
+            cellName: productName,
+            fontSize: 5,
+            fontWeight: FontWeight.bold,
           )
         ])
       ],

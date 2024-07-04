@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProductTableHeader extends StatelessWidget {
@@ -10,6 +8,37 @@ class EditProductTableHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Expanded(
+          child: Container(
+            width: 90.w,
+            height: 40.h,
+            decoration: const BoxDecoration(
+                color: Colors.green,
+                border: BorderDirectional(
+                    top: BorderSide(
+                        style: BorderStyle.solid, color: Colors.black),
+                    bottom: BorderSide(
+                        style: BorderStyle.solid, color: Colors.black),
+                    end: BorderSide(
+                        width: .5,
+                        style: BorderStyle.solid,
+                        color: Colors.black),
+                    start: BorderSide(
+                        width: .5,
+                        style: BorderStyle.solid,
+                        color: Colors.black))),
+            child: Center(
+              child: Text(
+                'Customer Price',
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontSize: 5.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+            ),
+          ),
+        ),
         // **************** customer price Container *******************
         Expanded(
           child: Container(
@@ -43,37 +72,7 @@ class EditProductTableHeader extends StatelessWidget {
           ),
         ),
         // ***************  main price Container  ******************
-        Expanded(
-          child: Container(
-            width: 90.w,
-            height: 40.h,
-            decoration: const BoxDecoration(
-                color: Colors.green,
-                border: BorderDirectional(
-                    top: BorderSide(
-                        style: BorderStyle.solid, color: Colors.black),
-                    bottom: BorderSide(
-                        style: BorderStyle.solid, color: Colors.black),
-                    end: BorderSide(
-                        width: .5,
-                        style: BorderStyle.solid,
-                        color: Colors.black),
-                    start: BorderSide(
-                        width: .5,
-                        style: BorderStyle.solid,
-                        color: Colors.black))),
-            child: Center(
-              child: Text(
-                'Customer Price',
-                style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontSize: 5.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
-          ),
-        ),
+
         // ***************   product stock Container  ******************
         Expanded(
           child: Container(

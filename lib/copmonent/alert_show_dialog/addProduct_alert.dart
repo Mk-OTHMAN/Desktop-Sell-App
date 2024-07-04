@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_cubit.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_state.dart';
 import 'package:home_tools/constant/constant.dart';
 import 'package:home_tools/copmonent/elevated_button.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
@@ -43,7 +43,7 @@ class AddAlertShowDialog extends StatelessWidget {
                       key: globalFormKey,
                       child: Column(children: [
                         // some space height ___
-                        Functions.someSpaceHeight(50),
+                        CustomWidget.someSpaceHeight(50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -66,7 +66,7 @@ class AddAlertShowDialog extends StatelessWidget {
                         Lottie.asset(Constant.addProductLottie,
                             height: 20.h, width: 100.w, fit: BoxFit.cover),
                         // some space height ___
-                        Functions.someSpaceHeight(20),
+                        CustomWidget.someSpaceHeight(20),
                         //* ____ second row for text form field ____
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -88,7 +88,7 @@ class AddAlertShowDialog extends StatelessWidget {
                           ],
                         ),
                         // some space height ___
-                        Functions.someSpaceHeight(150),
+                        CustomWidget.someSpaceHeight(150),
                         // elevated button for add product
                         CustomElevatedButton(
                             buttonName: 'Add Product',
@@ -103,7 +103,7 @@ class AddAlertShowDialog extends StatelessWidget {
                                     productStockController,
                                     mainPriceController,
                                     customerPriceController);
-                                Functions.gifShowDialog(
+                                CustomWidget.gifShowDialog(
                                     Constant.catGif,
                                     context,
                                     'SUCCESS',

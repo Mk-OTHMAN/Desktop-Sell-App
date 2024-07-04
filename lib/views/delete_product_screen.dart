@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_cubit.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_state.dart';
 import 'package:home_tools/constant/constant.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
 import 'package:home_tools/copmonent/table_component/cell_component.dart';
@@ -61,7 +61,8 @@ class DeleteProductScreen extends StatelessWidget {
                                           .name
                                           .toString(),
                                       cellWidth: double.infinity,
-                                      onPressed: () => Functions.gifShowDialog(
+                                      onPressed: () =>
+                                          CustomWidget.gifShowDialog(
                                               Constant.fireHandGif,
                                               context,
                                               'Warning',
@@ -69,7 +70,7 @@ class DeleteProductScreen extends StatelessWidget {
                                               () {
                                             productCubit.dleteProduct(index);
                                             Navigator.pop(context);
-                                            Functions.gifShowDialog(
+                                            CustomWidget.gifShowDialog(
                                                 Constant.rabitDone,
                                                 context,
                                                 'Success',

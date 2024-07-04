@@ -38,6 +38,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "awesome_dialog",
+      "rootUri": "file:///home/mk/.pub-cache/hosted/pub.dev/awesome_dialog-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "bloc",
       "rootUri": "file:///home/mk/.pub-cache/hosted/pub.dev/bloc-8.1.4",
       "packageUri": "lib/",
@@ -608,7 +614,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-05-22T19:43:01.883066Z",
+  "generated": "2024-06-30T16:55:21.904255Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

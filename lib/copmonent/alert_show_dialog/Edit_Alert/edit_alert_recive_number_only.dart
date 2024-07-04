@@ -44,7 +44,7 @@ class EditAlertNumberOnly extends StatelessWidget {
                     fit: BoxFit.cover),
               ),
               // some space height ___
-              Functions.someSpaceHeight(1),
+              CustomWidget.someSpaceHeight(1),
               NumberTextField(
                 controller: editFieldController,
                 hintText: hintText,
@@ -55,7 +55,7 @@ class EditAlertNumberOnly extends StatelessWidget {
               ),
 
               // some space height ___
-              Functions.someSpaceHeight(375),
+              CustomWidget.someSpaceHeight(375),
               // elevated button for add product
               CustomElevatedButton(
                 buttonName: 'Update Now',

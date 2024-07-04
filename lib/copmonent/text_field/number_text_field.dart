@@ -33,7 +33,7 @@ class NumberTextField extends StatelessWidget {
           child: TextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Enter $textUpTextField';
+                  return 'required field';
                 }
               },
               autofocus: true,

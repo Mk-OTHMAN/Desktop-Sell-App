@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_cubit.dart';
+import 'package:home_tools/bloc/corporate/corporate_cubit/corporate_cubit.dart';
 import 'package:home_tools/constant/constant.dart';
 import 'package:home_tools/copmonent/elevated_button.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
@@ -9,19 +10,22 @@ import 'package:home_tools/copmonent/alert_show_dialog/addProduct_alert.dart';
 import 'package:home_tools/copmonent/text_button.dart';
 import 'package:home_tools/routes/routes_name.dart';
 
+import '../copmonent/alert_show_dialog/corporat_alertShow/addCorporate_account.dart';
+
 class DashBoard extends StatelessWidget {
   const DashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
     AddProductCubit productCubit = BlocProvider.of<AddProductCubit>(context);
+    CorporateCubit corporateCubit = BlocProvider.of<CorporateCubit>(context);
     return Scaffold(
 
         //* ______ body section  _____
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(Constant.homeBackground), fit: BoxFit.fill),
             ),
@@ -29,7 +33,7 @@ class DashBoard extends StatelessWidget {
             child: Column(
               children: [
                 // some space height ___
-                Functions.someSpaceHeight(5),
+                CustomWidget.someSpaceHeight(5),
                 //* ______ row for Appbar section _____
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -52,7 +56,7 @@ class DashBoard extends StatelessWidget {
                       buttonNameFontSize: 4,
                     ),
                     // !some space width ___
-                    Functions.someSpaceWidth(1),
+                    CustomWidget.someSpaceWidth(1),
                     // !edit product text button
                     CustomTextButton(
                       textButtonName: '! Edit Product',
@@ -63,7 +67,7 @@ class DashBoard extends StatelessWidget {
                       buttonNameFontSize: 4,
                     ),
                     // !some space width ___
-                    Functions.someSpaceWidth(1),
+                    CustomWidget.someSpaceWidth(1),
                     // !delete product text button
                     CustomTextButton(
                       textButtonName: '- Delete Product',
@@ -74,25 +78,45 @@ class DashBoard extends StatelessWidget {
                       buttonNameFontSize: 4,
                     ),
                     // !some space width ___
-                    Functions.someSpaceWidth(1),
+                    CustomWidget.someSpaceWidth(1),
                     // !ِAdd corporate Account text button
                     CustomTextButton(
                       textButtonName: '+ Corporate Account',
-                      onPressed: () {},
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (context) => CorporateAddAlertShow(
+                          corporateNameController:
+                              corporateCubit.corporateNameController,
+                          corporateAccountController:
+                              corporateCubit.corporateAccountController,
+                        ),
+                      ),
                       buttonNameFontSize: 4,
                     ),
                     // !some space width ___
-                    Functions.someSpaceWidth(1),
+                    CustomWidget.someSpaceWidth(1),
+                    //! delete corporate Account text button
+                    CustomTextButton(
+                      textButtonName: '- Delete Corporate Account',
+                      onPressed: () {
+                        corporateCubit.corporateBox.deleteFromDisk();
+                      },
+                      buttonNameFontSize: 4,
+                    ),
+                    // !some space width ___
+                    CustomWidget.someSpaceWidth(1),
                     // !Add Customer Account text button
                     CustomTextButton(
                       textButtonName: '+ Customer Account',
-                      onPressed: () {},
+                      onPressed: () {
+                        print(corporateCubit.paidList);
+                      },
                       buttonNameFontSize: 4,
                     ),
                   ],
                 ),
                 // !some space height ___
-                Functions.someSpaceHeight(100),
+                CustomWidget.someSpaceHeight(100),
                 // //!column for some elevated button
                 Expanded(
                   child: Padding(
@@ -114,7 +138,7 @@ class DashBoard extends StatelessWidget {
                               color: Colors.orange,
                             ),
                             //             //! some space  ____________
-                            Functions.someSpaceHeight(25),
+                            CustomWidget.someSpaceHeight(25),
                             // !____ stock elevated button ______
                             CustomElevatedButton(
                               buttonName: 'Stock',
@@ -127,7 +151,7 @@ class DashBoard extends StatelessWidget {
                               buttonNameFontSize: 5,
                             ),
                             //! some space height ___
-                            Functions.someSpaceHeight(25),
+                            CustomWidget.someSpaceHeight(25),
                             //! ____ Corporate elevated button ______
                             CustomElevatedButton(
                               buttonName: 'Corporate Account',
@@ -139,7 +163,7 @@ class DashBoard extends StatelessWidget {
                               color: Colors.red,
                             ),
                             //! some space height ___
-                            Functions.someSpaceHeight(25),
+                            CustomWidget.someSpaceHeight(25),
                             //! ____ Custome Account elevated button ____
                             CustomElevatedButton(
                               buttonName: 'Customer Account',

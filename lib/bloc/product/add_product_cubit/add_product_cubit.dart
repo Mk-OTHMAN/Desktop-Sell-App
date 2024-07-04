@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_state.dart';
 import 'package:home_tools/copmonent/functions_wiget.dart';
-import 'package:home_tools/models/product.dart';
+import 'package:home_tools/models/product/product.dart';
 
 class AddProductCubit extends Cubit<AddProductState> {
   AddProductCubit() : super(AddProductInitial());
@@ -191,7 +191,7 @@ class AddProductCubit extends Cubit<AddProductState> {
     String content,
     VoidCallback onPressed,
   ) {
-    Functions.gifShowDialog(gifPath, context, title, content, onPressed);
+    CustomWidget.gifShowDialog(gifPath, context, title, content, onPressed);
     emit(AddProductInitial());
   }
 
