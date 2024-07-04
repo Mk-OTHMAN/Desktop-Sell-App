@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_cubit.dart';
-import 'package:home_tools/bloc/add_product_cubit/add_product_state.dart';
-import 'package:home_tools/bloc/search_product_cubit/search_cubit.dart';
-import 'package:home_tools/bloc/search_product_cubit/search_state.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_cubit.dart';
+import 'package:home_tools/bloc/product/add_product_cubit/add_product_state.dart';
+import 'package:home_tools/bloc/product/search_product_cubit/search_cubit.dart';
+import 'package:home_tools/bloc/product/search_product_cubit/search_state.dart';
 import 'package:home_tools/constant/constant.dart';
 import 'package:home_tools/copmonent/alert_show_dialog/alert_show%20_cases/show_dialog_editCaseString.dart';
 import 'package:home_tools/copmonent/table_component/editProductTable/editCell_component.dart';

@@ -1,16 +1,14 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
-import 'package:home_tools/bloc/search_product_cubit/search_state.dart';
-import 'package:home_tools/models/product.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:home_tools/bloc/corporate/corporate_search/corporate_search_state.dart';
+import 'package:home_tools/models/corporate/corporate.dart';
 
-class ProductSearchCubit extends Cubit<ProductSearchState> {
-  ProductSearchCubit() : super(SearchState());
+class CorporateSearchCubit extends Cubit<CorporateSearchState> {
+  CorporateSearchCubit() : super(CorporateSearch());
   TextEditingController searchController = TextEditingController();
-  TextEditingController productNamecontroller = TextEditingController();
+  TextEditingController corporatetNamecontroller = TextEditingController();
 
   bool isSearch = false;
   int index = 0;
@@ -36,7 +34,7 @@ class ProductSearchCubit extends Cubit<ProductSearchState> {
                 onPressed: () {
                   isSearch = !isSearch;
                   searchController.clear();
-                  emit(SearchState());
+                  emit(CorporateSearch());
                 },
                 icon: const Icon(Icons.clear),
                 color: Colors.black,
@@ -63,7 +61,7 @@ class ProductSearchCubit extends Cubit<ProductSearchState> {
           onPressed: () {
             isSearch = !isSearch;
             searchController.clear();
-            emit(SearchState());
+            emit(CorporateSearch());
           },
           icon: const Icon(
             Icons.search,
@@ -74,10 +72,10 @@ class ProductSearchCubit extends Cubit<ProductSearchState> {
 
   //* Add Data int search list Function
   void searchResult(String searchText) {
-    Box productBox = Hive.box<Product>('products');
-    searchList = productBox.values
+    Box corporateBox = Hive.box<Corporate>('corporate');
+    searchList = corporateBox.values
         .where((element) => element.name.toLowerCase().startsWith(searchText))
         .toList();
-    emit(SearchState());
+    emit(CorporateSearch());
   }
 }
